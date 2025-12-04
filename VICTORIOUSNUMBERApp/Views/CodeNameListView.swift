@@ -34,7 +34,7 @@ struct CodeNameListView: View {
                         HStack {
                             Image(systemName: "number.circle.fill") // Decorative icon
                                 .foregroundColor(.accentColor)
-                            Text(codename.capitalized) // Cleaner look than uppercased
+                            Text(codename)
                                 .font(.headline)
                                 .foregroundColor(.primary)
                             Spacer()

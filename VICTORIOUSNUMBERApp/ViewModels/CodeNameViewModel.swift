@@ -63,7 +63,7 @@ class CodeNameViewModel: ObservableObject {
         while newCodeNames.count < targetNameCount && attempts < maxAttempts {
             if let adj = adjectives.randomElement(),
                let noun = nouns.randomElement() {
-                newCodeNames.insert("\(adj) \(noun)")
+                newCodeNames.insert("\(adj)\(noun)".uppercased())
             }
             attempts += 1
         }
