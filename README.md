@@ -15,7 +15,7 @@ VICTORIOUSNUMBER est une application SwiftUI moderne conçue pour générer des 
 ## Prérequis
 
 *   Xcode 15.0 ou supérieur.
-*   iOS 17.0 ou supérieur.
+*   iOS 26.0 ou supérieur.
 
 ## Installation
 
