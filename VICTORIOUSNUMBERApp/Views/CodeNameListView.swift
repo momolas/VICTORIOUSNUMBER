@@ -80,8 +80,8 @@ struct CodeNameListView: View {
                  viewModel.generateCodeNames()
             }
         }
-        .onChange(of: viewModel.isLoading) { isLoading in
-            if !isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
+        .onChange(of: viewModel.isLoading) {
+            if !viewModel.isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
                 viewModel.generateCodeNames()
             }
         }
