@@ -1,57 +1,55 @@
-//
-//  CodeNameViewModel.swift
-//  VICTORIOUSNUMBER
-//
-//  Created by Jules on 05/11/2025.
-//
 
 import SwiftUI
 
-fileprivate struct WordPayload: Decodable {
-    let adjectives: [String]?
-    let nouns: [String]?
-
-    var words: [String] {
-        adjectives ?? nouns ?? []
-    }
-}
-
 class CodeNameViewModel: ObservableObject {
     @Published var codeNames: [String] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
 
     private var adjectives: [String] = []
     private var nouns: [String] = []
 
     init() {
-        loadData()
+        Task {
+            await loadData()
+        }
     }
 
-    func loadData() {
-        adjectives = loadWords(from: "adjectives")
-        nouns = loadWords(from: "nouns")
+    @MainActor
+    func loadData() async {
+        isLoading = true
+        errorMessage = nil
+
+        defer { isLoading = false }
+
+        do {
+            async let adjectivesLoad = loadWords(from: "adjectives")
+            async let nounsLoad = loadWords(from: "nouns")
+
+            adjectives = try await adjectivesLoad
+            nouns = try await nounsLoad
+        } catch {
+            errorMessage = "Impossible de charger les listes de mots. Veuillez réinstaller l'application."
+        }
     }
 
-    private func loadWords(from fileName: String) -> [String] {
+    private func loadWords(from fileName: String) async throws -> [String] {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            fatalError("Failed to locate \(fileName).json in bundle.")
+            throw URLError(.fileDoesNotExist)
         }
 
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load \(fileName).json from bundle.")
-        }
-
+        let data = try Data(contentsOf: url)
         let decoder = JSONDecoder()
-
-        guard let payload = try? decoder.decode(WordPayload.self, from: data) else {
-            fatalError("Failed to decode \(fileName).json from bundle.")
-        }
-
+        let payload = try decoder.decode(WordPayload.self, from: data)
         return payload.words
     }
 
     func generateCodeNames() {
         guard !adjectives.isEmpty, !nouns.isEmpty else {
-            codeNames = [] // Clear previous names if data is missing
+            // Attempt to reload if empty (maybe failed previously)
+             if errorMessage != nil {
+                 Task { await loadData() }
+             }
             return
         }
 
@@ -59,19 +57,26 @@ class CodeNameViewModel: ObservableObject {
         let maxPossibleNames = adjectives.count * nouns.count
         let targetNameCount = min(10, maxPossibleNames)
 
-        // Add a safeguard against potential infinite loops if random collisions are frequent
         var attempts = 0
-        let maxAttempts = targetNameCount * 5 // Allow for some collisions
+        let maxAttempts = targetNameCount * 5
 
         while newCodeNames.count < targetNameCount && attempts < maxAttempts {
             if let adj = adjectives.randomElement(),
                let noun = nouns.randomElement() {
-                // Add a space for better readability
                 newCodeNames.insert("\(adj) \(noun)")
             }
             attempts += 1
         }
 
-        codeNames = Array(newCodeNames)
+        codeNames = Array(newCodeNames).sorted()
+    }
+}
+
+fileprivate struct WordPayload: Decodable {
+    let adjectives: [String]?
+    let nouns: [String]?
+
+    var words: [String] {
+        adjectives ?? nouns ?? []
     }
 }
