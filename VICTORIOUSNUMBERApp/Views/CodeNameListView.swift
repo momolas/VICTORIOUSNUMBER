@@ -11,39 +11,69 @@ struct CodeNameListView: View {
     @StateObject private var viewModel = CodeNameViewModel()
 
     var body: some View {
-        VStack {
+        ZStack {
+            if viewModel.isLoading {
+                ProgressView("Chargement...")
+            } else if let error = viewModel.errorMessage {
+                VStack(spacing: 16) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.largeTitle)
+                        .foregroundColor(.yellow)
+                    Text(error)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    Button("Réessayer") {
+                        Task { await viewModel.loadData() }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            } else {
+                VStack {
+                    Text("CODENAME")
+                        .font(.largeTitle)
 
-            Text("CODENAME")
-                .font(.largeTitle)
+                    List(viewModel.codeNames, id: \.self) { codename in
+                        Text(codename)
+                            .font(.title2)
+                            .foregroundColor(.red)
+                    }
+                    .textSelection(.enabled) // Allows native selection/copy without UIKit
 
-            List(viewModel.codeNames, id: \.self) { codename in
-                Text(codename.uppercased())
-                    .font(.title2)
-                    .foregroundColor(.red)
+                    Button(action: {
+                        withAnimation {
+                            viewModel.generateCodeNames()
+                        }
+                    }, label: {
+                        Text("Générer")
+                    })
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 10)
+                    .background(.thinMaterial)
+                    .cornerRadius(5)
+                    .disabled(viewModel.isLoading)
+
+                    Spacer()
+                }
+                .overlay(Group {
+                    if viewModel.codeNames.isEmpty {
+                        Text("Appuyez sur Générer")
+                            .foregroundColor(.secondary)
+                    }
+                })
             }
-            .textSelection(.enabled)
-
-            Button(action: {
-                viewModel.generateCodeNames()
-            }, label: {
-                Text("Générer")
-            })
-            .font(.title3)
-            .fontWeight(.semibold)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 10)
-            .background(.thinMaterial)
-            .cornerRadius(5)
-
-            Spacer()
         }
         .onAppear {
-            // Initial generation
-            if viewModel.codeNames.isEmpty {
+             if viewModel.codeNames.isEmpty && !viewModel.isLoading {
+                 viewModel.generateCodeNames()
+             }
+        }
+        .onChange(of: viewModel.isLoading) {
+            if !viewModel.isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
                 viewModel.generateCodeNames()
             }
         }
-        // No need for NavigationView here, as it's already in a NavigationStack from LaunchView
     }
 }
 

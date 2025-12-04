@@ -23,8 +23,7 @@ struct LaunchView: View {
                 
                 Spacer()
                 
-//                NavigationLink(destination: CodeNameListView(wordList: WordList()),
-				NavigationLink(destination: CodeNameListView(),
+                NavigationLink(destination: CodeNameListView(),
                                label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .resizable()
