@@ -29,61 +29,47 @@ struct CodeNameListView: View {
                     .buttonStyle(.borderedProminent)
                 }
             } else {
-                List {
-                    ForEach(viewModel.codeNames, id: \.self) { codename in
-                        HStack {
-                            Image(systemName: "number.circle.fill") // Decorative icon
-                                .foregroundColor(.accentColor)
-                            Text(codename)
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "doc.on.doc")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .onTapGesture {
-                                    UIPasteboard.general.string = codename
-                                    // Could add a toast here ideally
-                                }
-                        }
-                        .padding(.vertical, 4)
+                VStack {
+                    Text("CODENAME")
+                        .font(.largeTitle)
+
+                    List(viewModel.codeNames, id: \.self) { codename in
+                        Text(codename)
+                            .font(.title2)
+                            .foregroundColor(.red)
                     }
-                }
-                .listStyle(.insetGrouped) // Modern list style
-                .refreshable {
-                    viewModel.generateCodeNames()
+                    .textSelection(.enabled) // Allows native selection/copy without UIKit
+
+                    Button(action: {
+                        withAnimation {
+                            viewModel.generateCodeNames()
+                        }
+                    }, label: {
+                        Text("Générer")
+                    })
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 10)
+                    .background(.thinMaterial)
+                    .cornerRadius(5)
+                    .disabled(viewModel.isLoading)
+
+                    Spacer()
                 }
                 .overlay(Group {
                     if viewModel.codeNames.isEmpty {
-                        ContentUnavailableView("Aucun nom généré", systemImage: "text.bubble", description: Text("Appuyez sur Générer pour commencer"))
+                        Text("Appuyez sur Générer")
+                            .foregroundColor(.secondary)
                     }
                 })
             }
         }
-        .navigationTitle("Noms de Code")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: {
-                    withAnimation {
-                        viewModel.generateCodeNames()
-                    }
-                }) {
-                    Label("Générer", systemImage: "arrow.clockwise")
-                }
-                .disabled(viewModel.isLoading)
-            }
-        }
-        .task {
-            // Use task to wait for loading if needed, or trigger generation when data is ready
-            if viewModel.codeNames.isEmpty && !viewModel.isLoading {
+        .onAppear {
+             // Initial generation handled via task or simple check
+             if viewModel.codeNames.isEmpty && !viewModel.isLoading {
                  viewModel.generateCodeNames()
-            }
-        }
-        .onChange(of: viewModel.isLoading) {
-            if !viewModel.isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
-                viewModel.generateCodeNames()
-            }
+             }
         }
     }
 }

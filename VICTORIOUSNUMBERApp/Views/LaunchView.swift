@@ -38,29 +38,14 @@ struct LaunchView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: CodeNameListView()) {
-                    VStack {
-                        Image(systemName: "bolt.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(.white)
-                            .shadow(radius: 10)
-                            .scaleEffect(isAnimating ? 1.1 : 1.0)
-                            .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
-
-                        Text("Démarrer")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                    }
-                    .frame(width: 160, height: 160)
-                    .background(Color.green.gradient)
-                    .clipShape(Circle())
-                    .shadow(color: .green.opacity(0.4), radius: 10, x: 0, y: 5)
-                }
-                .onAppear {
-                    isAnimating = true
-                }
+                NavigationLink(destination: CodeNameListView(),
+                               label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.green)
+                        .frame(width: 200, height: 200)
+                })
                 
                 Spacer()
 
