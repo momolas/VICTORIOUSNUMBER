@@ -1,6 +1,6 @@
 # VICTORIOUSNUMBER
 
-**Générateur de noms de code tactiques pour iOS.**
+**Générateur de noms de code pour iOS.**
 
 VICTORIOUSNUMBER est une application SwiftUI moderne conçue pour générer des noms de code uniques en combinant des adjectifs et des noms.
 

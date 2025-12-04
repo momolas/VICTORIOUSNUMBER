@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CodeNameListView: View {
     @StateObject private var viewModel = CodeNameViewModel()
@@ -74,6 +75,8 @@ struct CodeNameListView: View {
 }
 
 #Preview {
-    CodeNameListView()
-        .preferredColorScheme(.dark)
+    NavigationStack {
+        CodeNameListView()
+            .preferredColorScheme(.dark)
+    }
 }
