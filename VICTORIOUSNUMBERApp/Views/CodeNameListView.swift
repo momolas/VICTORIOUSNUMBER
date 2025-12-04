@@ -66,10 +66,14 @@ struct CodeNameListView: View {
             }
         }
         .onAppear {
-             // Initial generation handled via task or simple check
              if viewModel.codeNames.isEmpty && !viewModel.isLoading {
                  viewModel.generateCodeNames()
              }
+        }
+        .onChange(of: viewModel.isLoading) {
+            if !viewModel.isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
+                viewModel.generateCodeNames()
+            }
         }
     }
 }
