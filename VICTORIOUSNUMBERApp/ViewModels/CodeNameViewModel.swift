@@ -45,7 +45,7 @@ class CodeNameViewModel {
             adjectives = try await adjectivesLoad
             nouns = try await nounsLoad
 
-            logger.info("Successfully loaded \(adjectives.count) adjectives and \(nouns.count) nouns.")
+            logger.info("Successfully loaded \(self.adjectives.count) adjectives and \(self.nouns.count) nouns.")
         } catch {
             logger.error("Failed to load data: \(error.localizedDescription)")
             errorMessage = Constants.loadErrorMessage
@@ -111,7 +111,7 @@ class CodeNameViewModel {
         }
 
         codeNames = Array(newCodeNames).sorted()
-        logger.debug("Generated \(codeNames.count) code names.")
+        logger.debug("Generated \(self.codeNames.count) code names.")
     }
 }
 
