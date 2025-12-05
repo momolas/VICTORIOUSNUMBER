@@ -8,18 +8,33 @@
 import SwiftUI
 
 struct LaunchView: View {
+    @State private var isAnimating = false
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 30) {
                 
                 Spacer()
                 
-                Text("VICTORIOUSNUMBER")
-                    .font(.largeTitle)
-                
-                Text("Une application pour générer des noms de code")
-                    .font(.caption)
+                VStack(spacing: 10) {
+                    Text("VICTORIOUSNUMBER")
+                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.green, .blue],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .multilineTextAlignment(.center)
+
+                    Text("Générateur de noms de code tactiques")
+                        .font(.title3)
+                        .fontWeight(.medium)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal)
                 
                 Spacer()
                 
@@ -33,9 +48,13 @@ struct LaunchView: View {
                 })
                 
                 Spacer()
-                Spacer()
+
+                Text("v1.0")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .padding()
+            // Removed redundant .navigationBarTitleDisplayMode(.inline) to allow clean fullscreen look
         }
     }
 }
