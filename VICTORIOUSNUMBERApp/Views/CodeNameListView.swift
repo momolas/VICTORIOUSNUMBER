@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct CodeNameListView: View {
     @State private var viewModel = CodeNameViewModel()
@@ -38,7 +37,7 @@ struct CodeNameListView: View {
                             .font(.title2)
                             .foregroundColor(.red)
                     }
-                    .textSelection(.enabled) // Allows native selection/copy without UIKit
+                    .textSelection(.enabled)
 
                     Button(action: {
                         withAnimation {
