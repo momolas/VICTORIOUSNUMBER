@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct CodeNameListView: View {
-    @StateObject private var viewModel = CodeNameViewModel()
+    @State private var viewModel = CodeNameViewModel()
 
     var body: some View {
         ZStack {
