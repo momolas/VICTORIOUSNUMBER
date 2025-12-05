@@ -9,6 +9,15 @@ class CodeNameViewModel: ObservableObject {
     private var adjectives: [String] = []
     private var nouns: [String] = []
 
+    private enum Constants {
+        static let adjectivesFileName = "adjectives"
+        static let nounsFileName = "nouns"
+        static let jsonExtension = "json"
+        static let targetNameCount = 10
+        static let maxAttemptsMultiplier = 5
+        static let loadErrorMessage = "Impossible de charger les listes de mots. Veuillez réinstaller l'application."
+    }
+
     init() {
         Task {
             await loadData()
@@ -23,18 +32,18 @@ class CodeNameViewModel: ObservableObject {
         defer { isLoading = false }
 
         do {
-            async let adjectivesLoad = loadWords(from: "adjectives")
-            async let nounsLoad = loadWords(from: "nouns")
+            async let adjectivesLoad = loadWords(from: Constants.adjectivesFileName)
+            async let nounsLoad = loadWords(from: Constants.nounsFileName)
 
             adjectives = try await adjectivesLoad
             nouns = try await nounsLoad
         } catch {
-            errorMessage = "Impossible de charger les listes de mots. Veuillez réinstaller l'application."
+            errorMessage = Constants.loadErrorMessage
         }
     }
 
     private func loadWords(from fileName: String) async throws -> [String] {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: Constants.jsonExtension) else {
             throw URLError(.fileDoesNotExist)
         }
 
@@ -55,10 +64,10 @@ class CodeNameViewModel: ObservableObject {
 
         var newCodeNames = Set<String>()
         let maxPossibleNames = adjectives.count * nouns.count
-        let targetNameCount = min(10, maxPossibleNames)
+        let targetNameCount = min(Constants.targetNameCount, maxPossibleNames)
 
         var attempts = 0
-        let maxAttempts = targetNameCount * 5
+        let maxAttempts = targetNameCount * Constants.maxAttemptsMultiplier
 
         while newCodeNames.count < targetNameCount && attempts < maxAttempts {
             if let adj = adjectives.randomElement(),
