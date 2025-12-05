@@ -18,7 +18,7 @@ struct LaunchView: View {
                 
                 VStack(spacing: 10) {
                     Text("VICTORIOUSNUMBER")
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .font(.system(size: 32, weight: .heavy, design: .rounded))
                         .foregroundStyle(
                             LinearGradient(
                                 colors: [.green, .blue],
@@ -28,7 +28,7 @@ struct LaunchView: View {
                         )
                         .multilineTextAlignment(.center)
 
-                    Text("Générateur de noms de code tactiques")
+                    Text("Générateur de noms de code")
                         .font(.title3)
                         .fontWeight(.medium)
                         .foregroundColor(.secondary)
