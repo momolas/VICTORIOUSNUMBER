@@ -18,7 +18,7 @@ struct CodeNameListView: View {
                 VStack(spacing: 16) {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.largeTitle)
-                        .foregroundColor(.yellow)
+                        .foregroundStyle(.yellow)
                     Text(error)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -35,7 +35,7 @@ struct CodeNameListView: View {
                     List(viewModel.codeNames, id: \.self) { codename in
                         Text(codename)
                             .font(.title2)
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                     }
                     .textSelection(.enabled)
 
@@ -51,7 +51,7 @@ struct CodeNameListView: View {
                     .padding(.horizontal, 24)
                     .padding(.vertical, 10)
                     .background(.thinMaterial)
-                    .cornerRadius(5)
+                    .clipShape(.rect(cornerRadius: 5))
                     .disabled(viewModel.isLoading)
 
                     Spacer()
@@ -59,7 +59,7 @@ struct CodeNameListView: View {
                 .overlay(Group {
                     if viewModel.codeNames.isEmpty {
                         Text("Appuyez sur Générer")
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 })
             }
@@ -69,8 +69,8 @@ struct CodeNameListView: View {
                  viewModel.generateCodeNames()
              }
         }
-        .onChange(of: viewModel.isLoading) {
-            if !viewModel.isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
+        .onChange(of: viewModel.isLoading) { _, isLoading in
+            if !isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
                 viewModel.generateCodeNames()
             }
         }
