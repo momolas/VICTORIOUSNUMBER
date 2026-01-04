@@ -29,9 +29,13 @@ struct CodeNameListView: View {
                 }
             } else {
                 VStack {
-                    Text("CODENAME")
+                    Text("VICTORIOUSNUMBER")
                         .font(.largeTitle)
-
+						.fontWeight(.light)
+						.fontDesign(.rounded)
+						.foregroundStyle(.blue)
+						.multilineTextAlignment(.center)
+						
                     List(viewModel.codeNames, id: \.self) { codename in
                         Text(codename)
                             .font(.title2)
@@ -47,7 +51,7 @@ struct CodeNameListView: View {
                         Text("Générer")
                     })
                     .font(.title3)
-                    .fontWeight(.semibold)
+					.fontWeight(.light)
                     .padding(.horizontal, 24)
                     .padding(.vertical, 10)
                     .background(.thinMaterial)

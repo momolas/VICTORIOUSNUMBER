@@ -15,8 +15,10 @@ struct LaunchView: View {
                 
                 VStack(spacing: 10) {
                     Text("VICTORIOUSNUMBER")
-                        .font(.system(size: 32, weight: .heavy))
-                        .foregroundStyle(.blue)
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.fontDesign(.rounded)
+                        .foregroundStyle(.green)
                         .multilineTextAlignment(.center)
 
                     Text("Générateur de noms de code")
@@ -36,10 +38,6 @@ struct LaunchView: View {
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.green)
                             .frame(width: 200, height: 200)
-
-                        Text("Générer")
-                            .font(.title)
-                            .fontWeight(.semibold)
                     }
                 }
                 
