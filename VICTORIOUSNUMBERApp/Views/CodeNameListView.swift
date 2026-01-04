@@ -83,8 +83,7 @@ struct CodeNameListView: View {
 }
 
 #Preview {
-    NavigationStack {
-        CodeNameListView()
-            .preferredColorScheme(.dark)
-    }
+	CodeNameListView()
+		.preferredColorScheme(.dark)
+
 }
