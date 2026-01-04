@@ -39,6 +39,7 @@ struct CodeNameListView: View {
                     List(viewModel.codeNames, id: \.self) { codename in
                         Text(codename)
                             .font(.title2)
+							.fontWeight(.light)
                             .foregroundStyle(.red)
                     }
                     .textSelection(.enabled)
