@@ -11,7 +11,6 @@
 		CD0E635F2D200DF6006DA47E /* adjectives.json in Resources */ = {isa = PBXBuildFile; fileRef = CD0E635E2D200DE8006DA47E /* adjectives.json */; };
 		CD0E63612D200E00006DA47E /* CodeNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E63602D200E00006DA47E /* CodeNameViewModel.swift */; };
 		CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */; };
-		CDCF9C3027A419F800A9DA3A /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C1F27A419F600A9DA3A /* LaunchView.swift */; };
 		CDCF9C3227A419F800A9DA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCF9C2027A419F800A9DA3A /* Assets.xcassets */; };
 		CDCF9C3D27A41BE200A9DA3A /* CodeNameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */; };
 		D08ADA0182FC93E2B90DC957 /* WordPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C235E922EA54B09E92F6D96C /* WordPayload.swift */; };
@@ -23,7 +22,6 @@
 		CD0E635E2D200DE8006DA47E /* adjectives.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = adjectives.json; sourceTree = "<group>"; };
 		CD0E63602D200E00006DA47E /* CodeNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels/CodeNameViewModel.swift; sourceTree = "<group>"; };
 		CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VICTORIOUSNUMBERApp.swift; sourceTree = "<group>"; };
-		CDCF9C1F27A419F600A9DA3A /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		CDCF9C2027A419F800A9DA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCF9C2527A419F800A9DA3A /* VICTORIOUSNUMBER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VICTORIOUSNUMBER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNameListView.swift; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 		CD147CB627A590020035F3F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CDCF9C1F27A419F600A9DA3A /* LaunchView.swift */,
 				CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */,
 			);
 			path = Views;
@@ -158,7 +155,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDCF9C3027A419F800A9DA3A /* LaunchView.swift in Sources */,
 				CD0E63612D200E00006DA47E /* CodeNameViewModel.swift in Sources */,
 				CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */,
 				CDCF9C3D27A41BE200A9DA3A /* CodeNameListView.swift in Sources */,
