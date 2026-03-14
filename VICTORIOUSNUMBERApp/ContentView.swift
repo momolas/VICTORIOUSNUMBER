@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CodeNameListView: View {
+struct ContentView: View {
     @State private var viewModel = CodeNameViewModel()
 
     var body: some View {
@@ -82,7 +82,7 @@ struct CodeNameListView: View {
 }
 
 #Preview {
-	CodeNameListView()
+	ContentView()
 		.preferredColorScheme(.dark)
 
 }

@@ -12,7 +12,7 @@
 		CD0E63612D200E00006DA47E /* CodeNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E63602D200E00006DA47E /* CodeNameViewModel.swift */; };
 		CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */; };
 		CDCF9C3227A419F800A9DA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCF9C2027A419F800A9DA3A /* Assets.xcassets */; };
-		CDCF9C3D27A41BE200A9DA3A /* CodeNameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */; };
+		CDCF9C3D27A41BE200A9DA3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */; };
 		D08ADA0182FC93E2B90DC957 /* WordPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C235E922EA54B09E92F6D96C /* WordPayload.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VICTORIOUSNUMBERApp.swift; sourceTree = "<group>"; };
 		CDCF9C2027A419F800A9DA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCF9C2527A419F800A9DA3A /* VICTORIOUSNUMBER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VICTORIOUSNUMBER.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNameListView.swift; sourceTree = "<group>"; };
+		CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +46,7 @@
 				CD147CB527A58FFA0035F3F7 /* Models */,
 				CD0E63602D200E00006DA47E /* CodeNameViewModel.swift */,
 				CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */,
+				CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */,
 			);
 			path = VICTORIOUSNUMBERApp;
 			sourceTree = "<group>";
@@ -63,7 +64,6 @@
 		CD147CB627A590020035F3F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CDCF9C3C27A41BE200A9DA3A /* CodeNameListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					CDCF9C2427A419F800A9DA3A = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -157,7 +157,7 @@
 			files = (
 				CD0E63612D200E00006DA47E /* CodeNameViewModel.swift in Sources */,
 				CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */,
-				CDCF9C3D27A41BE200A9DA3A /* CodeNameListView.swift in Sources */,
+				CDCF9C3D27A41BE200A9DA3A /* ContentView.swift in Sources */,
 				D08ADA0182FC93E2B90DC957 /* WordPayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
