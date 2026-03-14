@@ -11,7 +11,7 @@ import SwiftUI
 struct VICTORIOUSNUMBERApp: App {
     var body: some Scene {
         WindowGroup {
-			LaunchView()
+			CodeNameListView()
         }
     }
 }
