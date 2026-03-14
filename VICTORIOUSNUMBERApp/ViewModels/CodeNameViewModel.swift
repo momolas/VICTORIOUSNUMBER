@@ -4,6 +4,7 @@ import Observation
 import OSLog
 import RegexBuilder
 
+@MainActor
 @Observable
 class CodeNameViewModel {
     var codeNames: [String] = []
@@ -30,7 +31,6 @@ class CodeNameViewModel {
         }
     }
 
-    @MainActor
     func loadData() async {
         isLoading = true
         errorMessage = nil
