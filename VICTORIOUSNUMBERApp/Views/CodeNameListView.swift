@@ -15,7 +15,7 @@ struct CodeNameListView: View {
             if viewModel.isLoading {
                 ProgressView("Chargement...")
             } else if let error = viewModel.errorMessage {
-                VStack(spacing: 16) {
+                VStack {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.largeTitle)
                         .foregroundStyle(.yellow)
@@ -53,10 +53,9 @@ struct CodeNameListView: View {
                     })
                     .font(.title3)
 					.fontWeight(.light)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 10)
+                    .padding()
                     .background(.thinMaterial)
-                    .clipShape(.rect(cornerRadius: 5))
+                    .clipShape(.rect(cornerRadius: 10))
                     .disabled(viewModel.isLoading)
 
                     Spacer()

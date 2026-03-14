@@ -10,10 +10,10 @@ import SwiftUI
 struct LaunchView: View {
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
+            VStack {
                 Spacer()
                 
-                VStack(spacing: 10) {
+                VStack {
                     Text("VICTORIOUSNUMBER")
 						.font(.largeTitle)
 						.fontWeight(.light)
@@ -32,12 +32,12 @@ struct LaunchView: View {
                 Spacer()
                 
                 NavigationLink(value: "CodeNameList") {
-                    VStack(spacing: 16) {
+                    VStack {
                         Image(systemName: "arrow.triangle.2.circlepath")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.green)
-                            .frame(width: 200, height: 200)
+                            .frame(maxWidth: 200, maxHeight: 200)
                     }
                 }
                 
