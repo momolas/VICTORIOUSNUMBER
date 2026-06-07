@@ -70,16 +70,6 @@ struct ContentView: View {
         .task {
             await viewModel.loadData()
         }
-        .onAppear {
-             if viewModel.codeNames.isEmpty && !viewModel.isLoading {
-                 viewModel.generateCodeNames()
-             }
-        }
-        .onChange(of: viewModel.isLoading) { _, isLoading in
-            if !isLoading && viewModel.codeNames.isEmpty && viewModel.errorMessage == nil {
-                viewModel.generateCodeNames()
-            }
-        }
     }
 }
 

@@ -14,7 +14,7 @@ class CodeNameViewModel {
     private var adjectives: [String] = []
     private var nouns: [String] = []
 
-    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.VICTORIOUSNUMBER", category: "CodeNameViewModel")
+    nonisolated private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.VICTORIOUSNUMBER", category: "CodeNameViewModel")
 
     private enum Constants {
         static let adjectivesFileName = "adjectives"
@@ -28,11 +28,23 @@ class CodeNameViewModel {
     init() {}
 
     func loadData() async {
+        guard adjectives.isEmpty || nouns.isEmpty else {
+            if codeNames.isEmpty {
+                generateCodeNames()
+            }
+            return
+        }
+
         isLoading = true
         errorMessage = nil
         logger.debug("Started loading data.")
 
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+            if errorMessage == nil && codeNames.isEmpty {
+                generateCodeNames()
+            }
+        }
 
         do {
             async let adjectivesLoad = loadWords(from: Constants.adjectivesFileName)
@@ -48,7 +60,7 @@ class CodeNameViewModel {
         }
     }
 
-    private func loadWords(from fileName: String) async throws -> [String] {
+    nonisolated private func loadWords(from fileName: String) async throws -> [String] {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: Constants.jsonExtension) else {
             logger.error("File not found: \(fileName).json")
             throw URLError(.fileDoesNotExist)
