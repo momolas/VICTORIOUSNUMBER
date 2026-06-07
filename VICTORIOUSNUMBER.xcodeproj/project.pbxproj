@@ -13,6 +13,8 @@
 		CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */; };
 		CDCF9C3227A419F800A9DA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCF9C2027A419F800A9DA3A /* Assets.xcassets */; };
 		CDCF9C3D27A41BE200A9DA3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */; };
+		CD0E63712D200E10006DA47E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E63702D200E10006DA47E /* ErrorView.swift */; };
+		CD0E63732D200E20006DA47E /* CodeNameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E63722D200E20006DA47E /* CodeNameListView.swift */; };
 		D08ADA0182FC93E2B90DC957 /* WordPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C235E922EA54B09E92F6D96C /* WordPayload.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		CDCF9C2027A419F800A9DA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCF9C2527A419F800A9DA3A /* VICTORIOUSNUMBER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VICTORIOUSNUMBER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CD0E63702D200E10006DA47E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		CD0E63722D200E20006DA47E /* CodeNameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNameListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,8 @@
 				CD0E63602D200E00006DA47E /* ViewModels/CodeNameViewModel.swift */,
 				CDCF9C1E27A419F600A9DA3A /* VICTORIOUSNUMBERApp.swift */,
 				CDCF9C3C27A41BE200A9DA3A /* ContentView.swift */,
+				CD0E63702D200E10006DA47E /* ErrorView.swift */,
+				CD0E63722D200E20006DA47E /* CodeNameListView.swift */,
 			);
 			path = VICTORIOUSNUMBERApp;
 			sourceTree = "<group>";
@@ -150,6 +156,8 @@
 				CD0E63612D200E00006DA47E /* ViewModels/CodeNameViewModel.swift in Sources */,
 				CDCF9C2E27A419F800A9DA3A /* VICTORIOUSNUMBERApp.swift in Sources */,
 				CDCF9C3D27A41BE200A9DA3A /* ContentView.swift in Sources */,
+				CD0E63712D200E10006DA47E /* ErrorView.swift in Sources */,
+				CD0E63732D200E20006DA47E /* CodeNameListView.swift in Sources */,
 				D08ADA0182FC93E2B90DC957 /* WordPayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
