@@ -17,6 +17,7 @@ struct ContentView: View {
             } else if let error = viewModel.errorMessage {
                 VStack {
                     Image(systemName: "exclamationmark.triangle")
+                        .accessibilityHidden(true)
                         .font(.largeTitle)
                         .foregroundStyle(.yellow)
                     Text(error)
@@ -44,13 +45,11 @@ struct ContentView: View {
                     }
                     .textSelection(.enabled)
 
-                    Button(action: {
+                    Button("Générer") {
                         withAnimation {
                             viewModel.generateCodeNames()
                         }
-                    }, label: {
-                        Text("Générer")
-                    })
+                    }
                     .font(.title3)
 					.fontWeight(.light)
                     .padding()
@@ -67,6 +66,9 @@ struct ContentView: View {
                     }
                 })
             }
+        }
+        .task {
+            await viewModel.loadData()
         }
         .onAppear {
              if viewModel.codeNames.isEmpty && !viewModel.isLoading {

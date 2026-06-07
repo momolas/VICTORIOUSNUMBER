@@ -25,11 +25,7 @@ class CodeNameViewModel {
         static let loadErrorMessage = "Impossible de charger les listes de mots. Veuillez réinstaller l'application."
     }
 
-    init() {
-        Task {
-            await loadData()
-        }
-    }
+    init() {}
 
     func loadData() async {
         isLoading = true
